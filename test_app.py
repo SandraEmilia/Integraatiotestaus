@@ -13,7 +13,7 @@ def test_db(monkeypatch):    #Luodaan väliaikainen tietokanta testausta varten.
     temp_db.close()
     os.unlink(temp_db.name)         #Poistaa väliaikaisen tietokannan
 
-def test_add_and_get_users():    #Luodaan funktio, jonka avulla testataan käyttäjän lisäämistä ja hakemista tietokannasta
+def test_add_and_get_users(test_db):    #Luodaan funktio, jonka avulla testataan käyttäjän lisäämistä ja hakemista tietokannasta
     app.add_user("Maija")        #Lisätään käyttäjä nimeltä Maija
     users = app.get_users()      #Haetaan käyttäjät tietokannasta
     assert len(users) == 1       #Varmistetaan, että käyttäjiä on yksi
